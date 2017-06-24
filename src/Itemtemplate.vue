@@ -5,7 +5,7 @@
     <div class="single-products">
         <div class="productinfo text-center">
           <img v-bind:src="goodsImg" v-bind:alt="goodsTitle" />
-          <h2>{{ price }}</h2>
+          <h2>${{ goodsPrice }}</h2>
           <p>{{ goodsTitle }}</p>
           <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
         </div>
@@ -26,13 +26,13 @@ export default {
   name: 'itemtemplate',
   data () {
     return {
-      price: 'Welcome to Your Vue.js App2'
     }
   },
   props: [
     'goodsTitle',
     'goodsImg',
-    'goodsId'
+    'goodsId',
+    'goodsPrice'
   ]
 }
 </script>

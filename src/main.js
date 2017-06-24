@@ -4,9 +4,15 @@
 import Vue from 'vue'
 import Itemtemplate from './Itemtemplate'
 import Recomendeditems from './Recomendeditems'
-import HeaderTop from './HeaderTop'
-import HeaderMiddle from './HeaderMiddle'
-import HeaderBottom from './HeaderBottom'
+
+import HeaderTop from './components/header/HeaderTop'
+import HeaderMiddle from './components/header/HeaderMiddle'
+import HeaderBottom from './components/header/HeaderBottom'
+
+import FooterBottom from './components/footer/FooterBottom'
+import FooterTop from './components/footer/FooterTop'
+import FooterWidget from './components/footer/FooterWidget'
+
 import Slider from './Slider'
 // import router from './router'
 // var Itemtemplate = require('vue!./Itemtemplate.vue')
@@ -16,7 +22,16 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 
 new Vue({
-  el: '#header',
+  el: '#footer',
+  components: {
+    footertop: FooterTop,
+    footerwidget: FooterWidget,
+    footerbottom: FooterBottom
+  }
+})
+
+new Vue({
+  el: '#header ',
   components: {
     headertop: HeaderTop,
     headermiddle: HeaderMiddle,
@@ -45,18 +60,21 @@ new Vue({
         {
           'title': 'test goods',
           'img': 'static/images/home/product1.jpg',
-          'id': '155'
+          'id': '155',
+          'price': '10'
         },
 
         {
           'title': 'test goods',
           'img': 'static/images/home/product1.jpg',
-          'id': '155'
+          'id': '155',
+          'price': '10'
         },
         {
           'title': 'test goods',
           'img': 'static/images/home/product1.jpg',
-          'id': '155'
+          'id': '155',
+          'price': '10'
         }
       ]
     }
