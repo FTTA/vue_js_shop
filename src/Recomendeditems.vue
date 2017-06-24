@@ -1,3 +1,5 @@
+<template>
+
 <div class="recommended_items"><!--recommended_items-->
   <h2 class="title text-center">recommended items</h2>
 
@@ -94,3 +96,5 @@
       </a>
   </div>
 </div><!--/recommended_items-->
+
+</template>

@@ -4,6 +4,10 @@
 import Vue from 'vue'
 import Itemtemplate from './Itemtemplate'
 import Recomendeditems from './Recomendeditems'
+import HeaderTop from './HeaderTop'
+import HeaderMiddle from './HeaderMiddle'
+import HeaderBottom from './HeaderBottom'
+import Slider from './Slider'
 // import router from './router'
 // var Itemtemplate = require('vue!./Itemtemplate.vue')
 
@@ -12,7 +16,23 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 
 new Vue({
-  el: '#vueapp',
+  el: '#header',
+  components: {
+    headertop: HeaderTop,
+    headermiddle: HeaderMiddle,
+    headerbottom: HeaderBottom
+  }
+})
+
+new Vue({
+  el: '#slider',
+  components: {
+    slider: Slider
+  }
+})
+
+new Vue({
+  el: '#vue_container_section',
   // router,
   // template: '<Itemtemplate/>',
   components: {
