@@ -16,11 +16,29 @@ import FooterWidget from './components/footer/FooterWidget'
 
 import Content from './components/Content'
 
+import Cart from './components/Cart'
+
 import Slider from './Slider'
 // import router from './router'
 // var Itemtemplate = require('vue!./Itemtemplate.vue')
 
 Vue.config.productionTip = false
+
+var cartVisibility = {
+  debug: true,
+  state: {
+    show: true
+  },
+  chageState: function (event) {
+    if (this.state.show === 1) {
+      alert('here')
+      this.state.show = false
+    } else {
+      alert('here 2')
+      this.state.show = true
+    }
+  }
+}
 
 /* eslint-disable no-new */
 
@@ -30,6 +48,9 @@ new Vue({
     headertop: HeaderTop,
     headermiddle: HeaderMiddle,
     headerbottom: HeaderBottom
+  },
+  data: {
+    cartVisibility: cartVisibility
   }
 })
 
@@ -43,7 +64,11 @@ new Vue({
 new Vue({
   el: '#content',
   components: {
-    maincontent: Content
+    maincontent: Content,
+    carttemplate: Cart
+  },
+  data: {
+    cartVisibility: cartVisibility
   }
 })
 

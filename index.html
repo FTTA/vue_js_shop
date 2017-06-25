@@ -27,7 +27,7 @@
 
         <HeaderTop></HeaderTop>
 
-        <HeaderMiddle></HeaderMiddle>
+        <HeaderMiddle v-bind:cartVisibility="cartVisibility"></HeaderMiddle>
 
         <HeaderBottom></HeaderBottom>
     </header><!--/header-->
@@ -37,6 +37,7 @@
     </section><!--/slider-->
 
     <section id="content">
+        <carttemplate v-bind:cartVisibility="cartVisibility"></carttemplate>
         <MainContent></MainContent>
     </section>
 
