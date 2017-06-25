@@ -335,20 +335,20 @@ export default({
           'title': 'test goods',
           'img': 'static/images/home/product1.jpg',
           'id': '155',
-          'price': '10'
+          'price': '11'
         },
 
         {
           'title': 'test goods',
           'img': 'static/images/home/product1.jpg',
           'id': '155',
-          'price': '10'
+          'price': '12'
         },
         {
           'title': 'test goods',
           'img': 'static/images/home/product1.jpg',
           'id': '155',
-          'price': '10'
+          'price': '13'
         }
       ]
     }
