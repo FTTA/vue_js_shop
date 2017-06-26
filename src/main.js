@@ -40,6 +40,39 @@ var cartVisibility = {
   }
 }
 
+const goodsStore = new Vuex.Store({
+  state: {
+    items: [
+      {
+        'title': 'test goods',
+        'img': 'static/images/home/product1.jpg',
+        'id': '155',
+        'price': '11'
+      },
+      {
+        'title': 'test goods',
+        'img': 'static/images/home/product1.jpg',
+        'id': '155',
+        'price': '12'
+      },
+      {
+        'title': 'test goods',
+        'img': 'static/images/home/product1.jpg',
+        'id': '155',
+        'price': '13'
+      }
+    ]
+  },
+  mutations: {
+    addToWishlist (state, goodsId) {
+      state.items.id.indexOf(goodsId).inWishlist = true
+    },
+    removeFromWishlist (state, goodsId) {
+      state.items.id.indexOf(goodsId).inWishlist = true
+    }
+  }
+})
+
 /* eslint-disable no-new */
 
 new Vue({
@@ -63,6 +96,7 @@ new Vue({
 
 new Vue({
   el: '#content',
+  store: goodsStore,
   components: {
     maincontent: Content,
     carttemplate: Cart

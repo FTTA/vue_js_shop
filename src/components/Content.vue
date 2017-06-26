@@ -10,7 +10,7 @@
           <div class="features_items" ><!--features_items-->
             <h2 class="title text-center">Features Items</h2>
 
-            <div v-for="item in this.goodsitems">
+            <div v-for="item in this.$store.state.items">
               <Itemtemplate
                 v-bind:goods-title="item.title"
                 v-bind:goods-img="item.img"
@@ -327,6 +327,9 @@ export default({
     Itemtemplate: Itemtemplate,
     Recomendeditems: Recomendeditems,
     Sidebar: Sidebar
+  },
+  beforeCreate () {
+    // console.log(this.$store)
   },
   data: function () {
     return {
