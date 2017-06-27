@@ -12,7 +12,8 @@
     </div>
     <div class="choose">
       <ul class="nav nav-pills nav-justified">
-        <li v-on:click="favorite"><a><i :class="wishlistClass"></i>{{ wishButtonText }}</a></li>
+        <li v-on:click="favorite(goodsId)">
+        <a><i :class="wishlistClass"></i>{{ wishButtonText }}</a></li>
         <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
       </ul>
     </div>
@@ -36,15 +37,15 @@ export default {
     }
   },
   methods: {
-    favorite: function (event) {
-      if (this.isFavorite === 1) {
-        this.isFavorite = 0
-        this.wishlistClass = this.plus
-        this.wishButtonText = this.addText
-      } else {
-        this.isFavorite = 1
+    favorite: function (goodsId) {
+      this.$store.commit('favorite', goodsId)
+
+      if (this.$store.getters.isFavorite(goodsId)) {
         this.wishlistClass = this.minus
         this.wishButtonText = this.removeText
+      } else {
+        this.wishlistClass = this.plus
+        this.wishButtonText = this.addText
       }
     }
   },

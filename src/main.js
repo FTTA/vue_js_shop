@@ -40,25 +40,26 @@ var cartVisibility = {
   }
 }
 
-const goodsStore = new Vuex.Store({
+const store = new Vuex.Store({
   state: {
+    wishlist: [],
     items: [
       {
         'title': 'test goods',
         'img': 'static/images/home/product1.jpg',
-        'id': '155',
+        'id': '1',
         'price': '11'
       },
       {
         'title': 'test goods',
         'img': 'static/images/home/product1.jpg',
-        'id': '155',
+        'id': '2',
         'price': '12'
       },
       {
         'title': 'test goods',
         'img': 'static/images/home/product1.jpg',
-        'id': '155',
+        'id': '3',
         'price': '13'
       }
     ]
@@ -69,6 +70,24 @@ const goodsStore = new Vuex.Store({
     },
     removeFromWishlist (state, goodsId) {
       state.items.id.indexOf(goodsId).inWishlist = true
+    },
+    favorite (state, goodsId) {
+      var index = state.wishlist.indexOf(goodsId)
+      if (index > -1) {
+        alert('remove')
+        state.wishlist.splice(index, 1)
+      } else {
+        alert('add')
+        state.wishlist.push(goodsId)
+      }
+    }
+  },
+  getters: {
+    isFavorite: (state) => (goodsId) => {
+      if (state.wishlist.indexOf(goodsId) > -1) {
+        return true
+      }
+      return false
     }
   }
 })
@@ -96,7 +115,7 @@ new Vue({
 
 new Vue({
   el: '#content',
-  store: goodsStore,
+  store,
   components: {
     maincontent: Content,
     carttemplate: Cart
