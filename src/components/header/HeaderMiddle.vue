@@ -37,7 +37,7 @@
               <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
               <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
               <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-              <li><a v-on:click="cartVisibility.chageState()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+              <li><router-link to="/cart"><i class="fa fa-shopping-cart"></i> Cart</router-link></li>
               <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
             </ul>
           </div>

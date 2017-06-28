@@ -12,8 +12,10 @@
     </div>
     <div class="choose">
       <ul class="nav nav-pills nav-justified">
-        <li v-on:click="favorite(goodsId)">
-        <a><i :class="wishlistClass"></i>{{ wishButtonText }}</a></li>
+        <li v-on:click="$store.commit('favorite', goodsId)">
+          <a v-if="$store.getters.isFavorite(goodsId)"><i class="fa fa-minus-square"></i>Remove from wishlist</a>
+          <a v-else><i class="fa fa-plus-square"></i>Add to wishlist</a>
+        </li>
         <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
       </ul>
     </div>
@@ -26,28 +28,9 @@
 export default {
   data: function () {
     return {
-      isFavorite: 0,
-      wishlistClass: 'fa fa-plus-square',
-      wishButtonText: 'Add to wishlist',
-
-      addText: 'Add to wishlist',
-      removeText: 'Remove from wishlist',
-      plus: 'fa fa-plus-square',
-      minus: 'fa fa-minus-square'
     }
   },
   methods: {
-    favorite: function (goodsId) {
-      this.$store.commit('favorite', goodsId)
-
-      if (this.$store.getters.isFavorite(goodsId)) {
-        this.wishlistClass = this.minus
-        this.wishButtonText = this.removeText
-      } else {
-        this.wishlistClass = this.plus
-        this.wishButtonText = this.addText
-      }
-    }
   },
   props: [
     'goodsTitle',
@@ -57,22 +40,3 @@ export default {
   ]
 }
 </script>
-
-/*
-var example2 = new Vue({
-  el: '#example-2',
-  data: {
-    name: 'Vue.js'
-  },
-  // define methods under the `methods` object
-  methods: {
-    greet: function (event) {
-      // `this` inside methods points to the Vue instance
-      alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
-      if (event) {
-        alert(event.target.tagName)
-      }
-    }
-  }
-})*/

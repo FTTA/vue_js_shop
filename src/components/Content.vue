@@ -10,7 +10,7 @@
           <div class="features_items" ><!--features_items-->
             <h2 class="title text-center">Features Items</h2>
 
-            <div v-for="item in $store.state.items">
+            <div v-for="item in $store.getters.getByFilter()">
               <Itemtemplate
                 v-bind:goods-title="item.title"
                 v-bind:goods-img="item.img"

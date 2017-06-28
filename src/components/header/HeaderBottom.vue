@@ -37,7 +37,7 @@
         </div>
         <div class="col-sm-3">
           <div class="search_box pull-right">
-            <input type="text" placeholder="Search"/>
+            <input type="text" placeholder="Search" v-model="search"/>
           </div>
         </div>
       </div>
@@ -45,3 +45,18 @@
   </div><!--/header-bottom-->
 
 </template>
+
+<script>
+export default {
+  data: function () {
+    return {
+      search: ''
+    }
+  },
+  watch: {
+    search: function () {
+      this.$store.commit('filterTitle', this.search)
+    }
+  }
+}
+</script>

@@ -3,8 +3,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-Vue.use(Vuex)
+import VueRouter from 'vue-router'
 
 import HeaderTop from './components/header/HeaderTop'
 import HeaderMiddle from './components/header/HeaderMiddle'
@@ -19,8 +18,18 @@ import Content from './components/Content'
 import Cart from './components/Cart'
 
 import Slider from './Slider'
-// import router from './router'
+import {routes} from './routes'
 // var Itemtemplate = require('vue!./Itemtemplate.vue')
+
+Vue.use(VueRouter)
+Vue.use(Vuex)
+
+const router = new VueRouter({
+  // url without #
+  mode: 'history',
+  // our objects with possible routes
+  routes
+})
 
 Vue.config.productionTip = false
 
@@ -43,6 +52,10 @@ var cartVisibility = {
 const store = new Vuex.Store({
   state: {
     wishlist: [],
+    cart: [],
+    filters: {
+      title: ''
+    },
     items: [
       {
         'title': 'test goods',
@@ -51,13 +64,13 @@ const store = new Vuex.Store({
         'price': '11'
       },
       {
-        'title': 'test goods',
+        'title': 'test boobs',
         'img': 'static/images/home/product1.jpg',
         'id': '2',
         'price': '12'
       },
       {
-        'title': 'test goods',
+        'title': 'test moods',
         'img': 'static/images/home/product1.jpg',
         'id': '3',
         'price': '13'
@@ -65,21 +78,16 @@ const store = new Vuex.Store({
     ]
   },
   mutations: {
-    addToWishlist (state, goodsId) {
-      state.items.id.indexOf(goodsId).inWishlist = true
-    },
-    removeFromWishlist (state, goodsId) {
-      state.items.id.indexOf(goodsId).inWishlist = true
-    },
     favorite (state, goodsId) {
       var index = state.wishlist.indexOf(goodsId)
       if (index > -1) {
-        alert('remove')
         state.wishlist.splice(index, 1)
       } else {
-        alert('add')
         state.wishlist.push(goodsId)
       }
+    },
+    filterTitle (state, searchString) {
+      state.filters.title = searchString.toLowerCase()
     }
   },
   getters: {
@@ -88,6 +96,15 @@ const store = new Vuex.Store({
         return true
       }
       return false
+    },
+    getByFilter: (state) => () => {
+      if (state.filters.title === '') {
+        return state.items
+      }
+
+      return state.items.filter(item => {
+        return item.title.toLowerCase().indexOf(state.filters.title) > -1
+      })
     }
   }
 })
@@ -96,6 +113,8 @@ const store = new Vuex.Store({
 
 new Vue({
   el: '#header ',
+  router,
+  store,
   components: {
     headertop: HeaderTop,
     headermiddle: HeaderMiddle,
@@ -115,6 +134,7 @@ new Vue({
 
 new Vue({
   el: '#content',
+  router,
   store,
   components: {
     maincontent: Content,
