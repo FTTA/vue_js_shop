@@ -52,7 +52,7 @@ var cartVisibility = {
 const store = new Vuex.Store({
   state: {
     wishlist: [],
-    cart: [],
+    cart: {},
     filters: {
       title: ''
     },
@@ -88,6 +88,21 @@ const store = new Vuex.Store({
     },
     filterTitle (state, searchString) {
       state.filters.title = searchString.toLowerCase()
+    },
+    addToCart (state, goodsId, quantity = 1) {
+      // var element = state.cart.filter(item => {
+      //   return item.id.toLowerCase().indexOf(goodsId) > -1
+      // })
+
+      // if (element) {
+      //   element.quantity = quantity
+      // } else {
+      //   state.cart.push({'id': goodsId, 'quantity': quantity})
+      // }
+
+      state.cart[goodsId] = {
+        'id': goodsId, 'quantity': quantity
+      }
     }
   },
   getters: {
@@ -104,6 +119,15 @@ const store = new Vuex.Store({
 
       return state.items.filter(item => {
         return item.title.toLowerCase().indexOf(state.filters.title) > -1
+      })
+    },
+    getById: (state) => (goodsId) => {
+      if (!goodsId) {
+        return
+      }
+
+      return state.items.filter(item => {
+        return item.id.indexOf(goodsId) > -1
       })
     }
   }
