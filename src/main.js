@@ -107,6 +107,7 @@ const store = new Vuex.Store({
   },
   getters: {
     isFavorite: (state) => (goodsId) => {
+      console.log(state.cart[goodsId])
       if (state.wishlist.indexOf(goodsId) > -1) {
         return true
       }
@@ -119,6 +120,18 @@ const store = new Vuex.Store({
 
       return state.items.filter(item => {
         return item.title.toLowerCase().indexOf(state.filters.title) > -1
+      })
+    },
+    isInCart: (state) => (goodsId) => {
+      console.log(state.cart[goodsId])
+      if (state.cart[goodsId]) {
+        return true
+      }
+      return false
+    },
+    getCart: (state) => () => {
+      return state.items.filter(item => {
+        return state.cart[item.id]
       })
     },
     getById: (state) => (goodsId) => {

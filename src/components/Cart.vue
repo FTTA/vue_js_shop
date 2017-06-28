@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in $store.getters.getByFilter()">
+      <tr v-for="item in $store.getters.getCart()">
         <itemcart
           v-bind:goods-title="item.title"
           v-bind:goods-img="item.img"

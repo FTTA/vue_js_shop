@@ -7,7 +7,12 @@
           <img v-bind:src="goodsImg" v-bind:alt="goodsTitle" />
           <h2>${{ goodsPrice }}</h2>
           <p>{{ goodsTitle }}</p>
-          <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+          <a v-if="$store.getters.isInCart(goodsId)" class="btn btn-default add-to-cart">
+            <i class="fa fa-shopping-cart"></i>Add to cart
+          </a>
+          <a v-on:click="$store.commit('addToCart', goodsId)" class="btn btn-default add-to-cart" v-else>
+            <i class="fa fa-shopping-cart"></i>Add to cart
+          </a>
         </div>
     </div>
     <div class="choose">
