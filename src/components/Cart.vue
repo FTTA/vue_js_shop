@@ -16,7 +16,17 @@
 
       <tbody>
         <tr>
-          <itemcart></itemcart>
+        <div class="row" v-for="item in $store.getters.getCart()">
+          <itemcart
+            v-bind:goods-title="item.title"
+            v-bind:goods-img="item.img"
+            v-bind:goods-id="item.id"
+            v-bind:goods-price="item.price"></itemcart>
+        </div>
+
+
+
+          >
         </tr>
       </tbody>
 
