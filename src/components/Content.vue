@@ -46,25 +46,6 @@ export default({
   data: function () {
     return {
       goodsitems: [
-        {
-          'title': 'test goods',
-          'img': 'static/images/home/product1.jpg',
-          'id': '155',
-          'price': '11'
-        },
-
-        {
-          'title': 'test goods',
-          'img': 'static/images/home/product1.jpg',
-          'id': '155',
-          'price': '12'
-        },
-        {
-          'title': 'test goods',
-          'img': 'static/images/home/product1.jpg',
-          'id': '155',
-          'price': '13'
-        }
       ]
     }
   }
