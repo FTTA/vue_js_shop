@@ -21,7 +21,6 @@
           <a v-if="$store.getters.isFavorite(goodsId)"><i class="fa fa-minus-square"></i>Remove from wishlist</a>
           <a v-else><i class="fa fa-plus-square"></i>Add to wishlist</a>
         </li>
-        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
       </ul>
     </div>
   </div>

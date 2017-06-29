@@ -1,15 +1,15 @@
 <template>
-
-<tr>
+<tbody>
+<tr v-for="item in $store.getters.getCart()">
   <td class="cart_product">
     <a href=""><img src="images/cart/one.png" alt=""></a>
   </td>
   <td class="cart_description">
-    <h4><a href="">{{ goodsTitle }}</a></h4>
-    <p>Web ID: {{ goodsId }}</p>
+    <h4><a href="">{{ item.goodsTitle }}</a></h4>
+    <p>Web ID: {{ item.goodsId }}</p>
   </td>
   <td class="cart_price">
-    <p>${{ goodsPrice }}</p>
+    <p>${{ item.goodsPrice }}</p>
   </td>
   <td class="cart_quantity">
     <div class="cart_quantity_button">
@@ -25,7 +25,7 @@
     <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
   </td>
 </tr>
-
+</tbody>
 </template>
 
 <script>
@@ -37,10 +37,12 @@ export default {
   methods: {
   },
   props: [
+  /*
     'goodsTitle',
     'goodsImg',
     'goodsId',
     'goodsPrice'
+  */
   ]
 }
 </script>

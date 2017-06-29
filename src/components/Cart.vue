@@ -13,16 +13,11 @@
         <td></td>
       </tr>
     </thead>
-    <tbody>
-      <tr v-for="item in $store.getters.getCart()">
-        <itemcart
-          v-bind:goods-title="item.title"
-          v-bind:goods-img="item.img"
-          v-bind:goods-id="item.id"
-          v-bind:goods-price="item.price">
-        </itemcart>
-      </tr>
-    </tbody>
+
+
+        <itemcart></itemcart>
+
+
   </table>
 </div>
 </section>
