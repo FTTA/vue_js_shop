@@ -10,7 +10,7 @@
           <div class="features_items" ><!--features_items-->
             <h2 class="title text-center">Features Items</h2>
 
-            <div v-for="item in $store.getters.getByFilter()">
+            <div v-for="item in $store.getters.getWishlist()">
               <Itemtemplate
                 v-bind:goods-title="item.title"
                 v-bind:goods-img="item.img"
@@ -31,14 +31,10 @@
 <script>
 
 import Itemtemplate from './content/Itemtemplate'
-import Recomendeditems from './content/Recomendeditems'
-import Sidebar from './content/Sidebar'
 
 export default({
   components: {
-    Itemtemplate: Itemtemplate,
-    Recomendeditems: Recomendeditems,
-    Sidebar: Sidebar
+    Itemtemplate: Itemtemplate
   },
   beforeCreate () {
     // console.log(this.$store)

@@ -19,6 +19,9 @@ import Cart from './components/Cart'
 
 import Slider from './Slider'
 import {routes} from './routes'
+
+import {goods} from './goods'
+
 // var Itemtemplate = require('vue!./Itemtemplate.vue')
 
 Vue.use(VueRouter)
@@ -51,31 +54,13 @@ var cartVisibility = {
 
 const store = new Vuex.Store({
   state: {
+    cartCount: 0,
     wishlist: [],
     cart: {},
     filters: {
       title: ''
     },
-    items: [
-      {
-        'title': 'test goods',
-        'img': 'static/images/home/product1.jpg',
-        'id': '1',
-        'price': '11'
-      },
-      {
-        'title': 'test boobs',
-        'img': 'static/images/home/product1.jpg',
-        'id': '2',
-        'price': '12'
-      },
-      {
-        'title': 'test moods',
-        'img': 'static/images/home/product1.jpg',
-        'id': '3',
-        'price': '13'
-      }
-    ]
+    items: goods
   },
   mutations: {
     favorite (state, goodsId) {
@@ -103,9 +88,22 @@ const store = new Vuex.Store({
       state.cart[goodsId] = {
         'id': goodsId, 'quantity': quantity
       }
+
+      state.cartCount = 0
+      for (var property in state.cart) {
+        if (state.cart.hasOwnProperty(property)) {
+          state.cartCount += state.cart[property].quantity
+        }
+      }
     }
   },
   getters: {
+    getWishlist: (state) => () => {
+      return state.items.filter(item => {
+        return state.wishlist.indexOf(item.id) > -1
+      })
+    },
+
     isFavorite: (state) => (goodsId) => {
       console.log(state.cart[goodsId])
       if (state.wishlist.indexOf(goodsId) > -1) {
@@ -134,6 +132,20 @@ const store = new Vuex.Store({
         return state.cart[item.id]
       })
     },
+    getCartCount: (state) => () => {
+      /*
+      var count = 0
+      console.log(state.cart)
+      for (var property in state.cart) {
+        if (state.cart.hasOwnProperty(property)) {
+          count += state.cart[property].quantity
+        }
+      }
+      */
+
+      return state.cartCount
+    },
+
     getById: (state) => (goodsId) => {
       if (!goodsId) {
         return

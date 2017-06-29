@@ -14,9 +14,11 @@
       </tr>
     </thead>
 
-
-        <itemcart></itemcart>
-
+      <tbody>
+        <tr>
+          <itemcart></itemcart>
+        </tr>
+      </tbody>
 
   </table>
 </div>

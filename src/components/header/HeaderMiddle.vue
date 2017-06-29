@@ -16,8 +16,8 @@
         <div class="col-sm-8">
           <div class="shop-menu pull-right">
             <ul class="nav navbar-nav">
-              <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-              <li><router-link to="/cart"><i class="fa fa-shopping-cart"></i> Cart</router-link></li>
+              <li><router-link to="/wishlist"><i class="fa fa-star"></i> Wishlist</router-link></li>
+              <li><router-link to="/cart"><i class="fa fa-shopping-cart"></i>Cart {{ $store.getters.getCartCount() }} </router-link></li>
             </ul>
           </div>
         </div>
@@ -29,8 +29,18 @@
 
 <script>
 export default {
+  data: function () {
+    return {
+      tttt: 1
+    }
+  },
   props: [
-    'cartVisibility'
-  ]
+
+  ],
+  methods: {
+    cartCount: function () {
+      return this.$store.getters.getCartCount()
+    }
+  }
 }
 </script>
